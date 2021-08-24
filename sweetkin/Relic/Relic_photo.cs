@@ -22,7 +22,7 @@ namespace sweetkin.Relic
                 Description = "sap +1 de reduc",
                 DescriptionKey = "Power_RIII",
                 RelicLoreTooltipKeys = new List<string> { "Lore_RIII" },
-                IconPath = "sweet/Relic/SilverPlate.png",
+                IconPath = "sweet/Relic/Frame.png",
                 RelicPoolIDs = new List<string> { MegaRelicPool },
                 ClanID = Clan.ID,
                 IsBossGivenRelic = false,

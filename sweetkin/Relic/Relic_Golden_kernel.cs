@@ -22,6 +22,7 @@ namespace sweetkin.Relic
                 Description = "5 gold per eaten",
                 DescriptionKey = "Power_RIV",
                 RelicLoreTooltipKeys = new List<string> { "Lore_RIV" },
+                RelicActivatedKey = "Relic_Trigger_RIV",
                 IconPath = "sweet/Relic/kernel.png",
                 RelicPoolIDs = new List<string> { MegaRelicPool },
                 ClanID = Clan.ID,
@@ -30,7 +31,7 @@ namespace sweetkin.Relic
                 {
                     new RelicEffectDataBuilder
                     {
-                         RelicEffectClassName = "RelicEffectGoldOnTrigger",
+                         RelicEffectClassName = "RelicEffectGoldOnTrigger",                        
                          ParamFloat = 0,
                          ParamInt = 5,
                          ParamSourceTeam = Team.Type.Monsters, //compared to targetteam type, you say WHO is affected by the effect

@@ -69,12 +69,32 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = CrabCakecharacter
+                            ParamCharacterData = CrabCakecharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XX",
+                UpgradeTitleKey = "Sweetkin_Essence_XX",
+                SourceSynthesisUnit = CrabCakecharacter,
+                UpgradeDescription = "Essence_Card_XX",
+                UpgradeDescriptionKey = "Essence_Card_XX",
+
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = VanillaStatusEffectIDs.Armor,
+                        count = 20
+                     },
+                },
+
+            }.Build();
         }
     }
 }

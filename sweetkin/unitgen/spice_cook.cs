@@ -68,12 +68,32 @@ namespace sweetkin.unitgen
                     {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Cayennecharacter
+                            ParamCharacterData = Cayennecharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                     }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXVII",
+                UpgradeTitleKey = "Sweetkin_Essence_XXVII",
+                SourceSynthesisUnit = Cayennecharacter,
+                UpgradeDescription = "Essence_Card_XXVII",
+                UpgradeDescriptionKey = "Essence_Card_XXVII",
+
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = VanillaStatusEffectIDs.Rage,
+                        count = 8
+                     },
+                },
+
+            }.Build();
 
             CharacterData Cookcharacter = new CharacterDataBuilder
             {
@@ -124,12 +144,44 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Cookcharacter
+                            ParamCharacterData = Cookcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXVIII",
+                UpgradeTitleKey = "Sweetkin_Essence_XXVIII",
+                SourceSynthesisUnit = Cookcharacter,
+                UpgradeDescription = "Essence_Card_XXVIII",
+                UpgradeDescriptionKey = "Essence_Card_XXVIII",
+                BonusDamage = 15,
+
+                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnKill,
+                        Description = "Spawn a Cayenne",
+                        DescriptionKey = "Mon_VIII",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                                new CardEffectDataBuilder
+                                {
+                                    EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                                    TargetMode = TargetMode.Room,
+                                    ParamCharacterData = Cayennecharacter,
+                                    ParamInt = 1
+                                }
+                        },
+                    }
+                },
+
+            }.Build();
         }
     }
 }

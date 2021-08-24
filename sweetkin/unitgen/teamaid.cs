@@ -215,13 +215,191 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = maidchar
+                            ParamCharacterData = maidchar,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
 
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXIX",
+                UpgradeTitleKey = "Sweetkin_Essence_XXIX",
+                SourceSynthesisUnit = maidchar,
+                UpgradeDescription = "Essence_Card_XXIX",
+                UpgradeDescriptionKey = "Essence_Card_XXIX",
+
+                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
+                {
+
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.PostCombat,
+                        Description = "Cure all negative effects from the eater",
+                        DescriptionKey = "Essence_Card_XXIX",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveAllStatusEffects,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                ShouldTest = true,
+                                ParamStatusEffects = new StatusEffectStackData[]{}
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = "ephemeral",
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Sap,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Dazed,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Emberdrain,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Fragile,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Frostbite,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.HealImmunity,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Inert,
+                                        count = 999
+                                    }
+
+                                }
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffect,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
+                                HideTooltip = true,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Rooted,
+                                        count = 999
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }.Build();
         }
     }
 }

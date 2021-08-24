@@ -21,7 +21,7 @@ namespace sweetkin.SpellList
                 Cost = 0,
                 Rarity = CollectableRarity.Rare,
                 TargetsRoom = true,
-                Targetless = true,
+                Targetless = false,
                 ClanID = Clan.ID,
                 AssetPath = "sweet/Card Assets/card_XVI.png", // change later
                 CardPoolIDs = new List<string> { VanillaCardPoolIDs.MegaPool },

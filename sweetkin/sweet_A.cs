@@ -5,8 +5,10 @@ using Trainworks;
 using Trainworks.Interfaces;
 using Trainworks.Managers;
 using Trainworks.Utilities;
+using System.Collections.Generic;
 
-using static sweetkin.Unit_FastFood;
+using sweetkin.unitgen;
+//using static sweetkin.Unit_FastFood;
 using static sweetkin.Spell_sweets;
 using static sweetkin.Clan;
 using static sweetkin.Rosette;
@@ -23,6 +25,7 @@ using static sweetkin.unitgen.Viimp;
 using static sweetkin.unitgen.Sherbetrus;
 using static sweetkin.unitgen.Unit_Hot;
 using static sweetkin.HeroSweet;
+using sweetkin.harmony;
 
 using static sweetkin.SpellList.Dove;
 using static sweetkin.SpellList.spell_expulsion;
@@ -47,8 +50,11 @@ using static sweetkin.Relic.Relic_SilverPlater;
 using static sweetkin.Relic.Relic_Pamphlet;
 using static sweetkin.Relic.Relic_photo;
 using static sweetkin.Relic.Relic_Golden_kernel;
+using static sweetkin.Relic.Relic_Paste;
+using static sweetkin.Relic.Relic_Mucus;
 using System;
-using System.Collections.Generic;
+
+
 
 namespace sweetkin
 {
@@ -59,11 +65,15 @@ namespace sweetkin
     
     public class sweet_A : BaseUnityPlugin, IInitializable
     {
+        public static sweet_A Instance { get; private set; }
+
         public static ClassData setup; /// maybe able to fix something/// 
         public const string GUID = "com.name.package.generic";
 
         public void Awake()
         {
+            Instance = this;
+
             Harmony harmony = new Harmony(GUID);
             harmony.PatchAll();
         }
@@ -77,7 +87,7 @@ namespace sweetkin
 
             //  34/37
             //unit build
-            BuildFastFoodCharacter();
+            
             BuildButlerCharacter();
             BuildMaidCharacter();
             BuildSweetlingCharacter();
@@ -89,7 +99,9 @@ namespace sweetkin
             BuildCrabcakeCharacter();
             BuildViimpCharacter();
             BuildSherbetrusCharacter();
-            BuildHOTCharacter();
+            BuildHOTCharacter();            
+            Unit_FastFood.BuildFastFoodCharacter();
+
 
             //spells build           
             BuildSpellHospitality();
@@ -120,18 +132,22 @@ namespace sweetkin
             fix_magic("Sweetkin_Card_TuningFork");
             fix_magic("Sweetkin_Card_WorkShift");
 
-            
+
 
             //late build
+            LiLyPatch.FindUnitSynthesisMappingInstanceToStub();
             BuildHero();//rosette
             BuildHeroV2();//sweet Sally
             buildbanner(); //it needs the cards to be already made
+                        
 
             //Relic build
             Make_relic_silver();
             Make_relic_pamphlet();
             Make_relic_photo();
             Make_relic_gold();
+            Make_relic_Paste();
+            Make_relic_Mucus();
         }
 
         //code provided by dusk, Enter a cards "Id". They must have "EffectStateName = "CardEffectDamage"," in the CardEffectDataBuilder, same deal for the heal effect
@@ -153,7 +169,10 @@ namespace sweetkin
             // Nothing special is required here because there are no filters for this enhancer so long as a spell does damage
         }
 
-        
+        public static void Log(string message)
+        {
+            Instance.Logger.LogInfo(message);
+        }
 
     }
 }

@@ -60,7 +60,7 @@ namespace sweetkin.unitgen
                 }
             }.BuildAndRegister();
 
-            CardData Butler = new CardDataBuilder
+            CardData cerberus = new CardDataBuilder
             {
                 CardID = "Sweetkin_Card_Sherbetrus",
                 Name = "Sherbet-rus",
@@ -78,12 +78,33 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = cerberuscharacter
+                            ParamCharacterData = cerberuscharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXIII",
+                UpgradeTitleKey = "Sweetkin_Essence_XXIII",
+                SourceSynthesisUnit = cerberuscharacter,
+                UpgradeDescription = "Essence_Card_XXIII",
+                UpgradeDescriptionKey = "Essence_Card_XXIII",
+                BonusHP = 40,
+
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = "eatmany",
+                        count = 4
+                     },
+                },
+
+            }.Build();
         }
     }
 }

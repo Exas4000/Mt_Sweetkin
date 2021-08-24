@@ -64,12 +64,44 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Viimpcharacter
+                            ParamCharacterData = Viimpcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXXII",
+                UpgradeTitleKey = "Sweetkin_Essence_XXXII",
+                SourceSynthesisUnit = Viimpcharacter,
+                UpgradeDescription = "Essence_Card_XXXII",
+                UpgradeDescriptionKey = "Essence_Card_XXXII",
+                
+
+                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnSpawn,
+                        Description = "Gain 20 gold",
+                        DescriptionKey = "Mon_XII",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                                new CardEffectDataBuilder
+                                {
+                                    EffectStateType = VanillaCardEffectTypes.CardEffectRewardGold,
+                                    TargetMode = TargetMode.Room,
+                                    TargetTeamType = Team.Type.Monsters,
+                                    ParamInt = 20
+                                }
+                        },
+                    }
+                },
+
+            }.Build();
         }
     }
 }

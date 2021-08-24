@@ -54,7 +54,7 @@ namespace sweetkin.unitgen
                 }
             }.BuildAndRegister();
 
-            CardData Butler = new CardDataBuilder
+            CardData hotpotato = new CardDataBuilder
             {
                 CardID = "Sweetkin_Card_Hot",
                 Name = "Pyre-Tatoe",
@@ -72,12 +72,46 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Hotcharacter
+                            ParamCharacterData = Hotcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXX",
+                UpgradeTitleKey = "Sweetkin_Essence_XXX",
+                SourceSynthesisUnit = Hotcharacter,
+                UpgradeDescription = "Essence_Card_XXX",
+                UpgradeDescriptionKey = "Essence_Card_XXX",
+                BonusDamage = 15,
+                BonusHP = 15,
+
+                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                        {
+                            Trigger = CharacterTriggerData.Trigger.PostCombat,
+                            Description = "Deal 5 damage to everyone",
+                            DescriptionKey = "Mon_X",
+                            EffectBuilders = new List<CardEffectDataBuilder>
+                            {
+                                new CardEffectDataBuilder
+                                {
+                                    EffectStateType = VanillaCardEffectTypes.CardEffectDamage,
+                                    TargetMode = TargetMode.Room,
+                                    TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                                    ParamInt = 5
+
+                                }
+                            },
+                        }
+                },
+
+            }.Build();
         }
     }
 }

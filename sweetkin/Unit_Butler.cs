@@ -19,7 +19,7 @@ namespace sweetkin
                 AttackDamage = 5,
                 AssetPath = "sweet/Unit Assets/sweetkin_tall_ice_cream.png", //change later
                 SubtypeKeys = new List<string> { "SubtypesData_Snack" },
-                PriorityDraw = false,
+                PriorityDraw = true,
                 StartingStatusEffects = new StatusEffectStackData[]
                 {
                      new StatusEffectStackData
@@ -76,12 +76,61 @@ namespace sweetkin
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Butlercharacter
+                            ParamCharacterData = Butlercharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXXIII",
+                UpgradeTitleKey = "Sweetkin_Essence_XXXIII",
+                SourceSynthesisUnit = Butlercharacter,
+                UpgradeDescription = "Essence_Card_XXXIII",
+                UpgradeDescriptionKey = "Essence_Card_XXXIII",
+
+                BonusHP = 15,
+                BonusDamage = 5,
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = "eatmany",
+                        count = 3
+                     },
+                },
+
+                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                        {
+                            Trigger = CharacterTriggerData.Trigger.PostCombat,
+                            Description = "Apply frostbite [effect0.status0.power] on enemy",
+                            DescriptionKey = "Mon_XIII",
+                            EffectBuilders = new List<CardEffectDataBuilder>
+                            {
+                                new CardEffectDataBuilder
+                                {
+                                    EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
+                                    TargetMode = TargetMode.Room,
+                                    TargetTeamType = Team.Type.Heroes,
+                                    ParamStatusEffects = new StatusEffectStackData[]
+                                    {
+                                        new StatusEffectStackData
+                                        {
+                                            statusId = VanillaStatusEffectIDs.Frostbite,
+                                            count = 4
+                                        }
+                                    }
+                                }
+                            },
+                        }
+                },
+
+            }.Build();
         }
 
     }
