@@ -76,12 +76,39 @@ namespace sweetkin.unitgen
                     {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = sourguardcharacter
+                            ParamCharacterData = sourguardcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                     }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXIV",
+                UpgradeTitleKey = "Sweetkin_Essence_XXIV",
+                SourceSynthesisUnit = sourguardcharacter,
+                UpgradeDescription = "Essence_Card_XXIV",
+                UpgradeDescriptionKey = "Essence_Card_XXIV",
+
+                BonusHP = 5,
+                BonusDamage = 15,
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = "eatmany",
+                        count = 3
+                     },
+                },
+
+            }.Build();
+
+            ///////
+
+            
+            ///////
 
             CharacterData sourbosscharacter = new CharacterDataBuilder
             {
@@ -94,7 +121,7 @@ namespace sweetkin.unitgen
                 AttackDamage = 15,
                 AssetPath = "sweet/Unit Assets/sweetkin_large_lime.png",
                 //SubtypeKeys = new List<string> { "SubtypesData_Snack" }, enable if it matters
-                PriorityDraw = false,
+                PriorityDraw = true,
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                     {                        
                         new CharacterTriggerDataBuilder
@@ -123,7 +150,7 @@ namespace sweetkin.unitgen
                     }
             }.BuildAndRegister();
 
-            CardData sweetling = new CardDataBuilder
+            CardData lime = new CardDataBuilder
             {
                 CardID = "Sweetkin_Card_Lime",
                 Name = "Lime",
@@ -141,12 +168,26 @@ namespace sweetkin.unitgen
                     {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = sourbosscharacter
+                            ParamCharacterData = sourbosscharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                     }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXV",
+                UpgradeTitleKey = "Sweetkin_Essence_XXV",
+                SourceSynthesisUnit = sourbosscharacter,
+                UpgradeDescription = "Essence_Card_XXV",
+                UpgradeDescriptionKey = "Essence_Card_XXV",
+
+                BonusHP = 30,
+                BonusDamage = 15,
+
+            }.Build();
         }
     }
 }

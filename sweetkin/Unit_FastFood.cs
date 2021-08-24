@@ -5,6 +5,7 @@ using Trainworks.Builders;
 using Trainworks.Constants;
 
 
+
 namespace sweetkin
 {
     class Unit_FastFood
@@ -22,7 +23,7 @@ namespace sweetkin
                 AttackDamage = 0,
                 AssetPath = "sweet/Unit Assets/FastFood.png",
                 SubtypeKeys = new List<string> { "SubtypesData_Snack" },
-                PriorityDraw = false,
+                PriorityDraw = true,
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                     {
                         new CharacterTriggerDataBuilder
@@ -69,12 +70,32 @@ namespace sweetkin
                     {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = fastfoodcharacter
+                            ParamCharacterData = fastfoodcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                     }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXXIV",
+                UpgradeTitleKey = "Sweetkin_Essence_XXXIV",
+                SourceSynthesisUnit = fastfoodcharacter,
+                UpgradeDescription = "Essence_Card_XXXIV",
+                UpgradeDescriptionKey = "Essence_Card_XXXIV",
+
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = VanillaStatusEffectIDs.Quick,
+                        count = 1
+                     },
+                },
+
+            }.Build();
         }
 
 

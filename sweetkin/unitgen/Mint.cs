@@ -56,7 +56,7 @@ namespace sweetkin.unitgen
                 }
             }.BuildAndRegister();
 
-            CardData Butler = new CardDataBuilder
+            CardData Mint = new CardDataBuilder
             {
                 CardID = "Sweetkin_Card_Mint",
                 Name = "Mint",
@@ -74,12 +74,26 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Mintcharacter
+                            ParamCharacterData = Mintcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXII",
+                UpgradeTitleKey = "Sweetkin_Essence_XXII",
+                SourceSynthesisUnit = Mintcharacter,
+                UpgradeDescription = "Essence_Card_XXII",
+                UpgradeDescriptionKey = "Essence_Card_XXII",
+
+                BonusHP = 100,
+                BonusSize = 2,
+
+            }.Build();
         }
         
     }

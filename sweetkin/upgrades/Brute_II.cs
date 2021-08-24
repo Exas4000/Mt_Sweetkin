@@ -24,7 +24,7 @@ namespace sweetkin.upgrades
                     {
                         Trigger = CharacterTriggerData.Trigger.OnEaten,
                         DescriptionKey = "2c",
-                        HideTriggerTooltip = true,
+                        HideTriggerTooltip = false,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

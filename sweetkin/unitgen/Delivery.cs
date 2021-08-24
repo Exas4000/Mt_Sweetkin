@@ -56,7 +56,7 @@ namespace sweetkin.unitgen
             }.BuildAndRegister();
             
 
-            CardData Butler = new CardDataBuilder
+            CardData Deli = new CardDataBuilder
             {
                 CardID = "Sweetkin_Card_Delivery",
                 Name = "Delivery Boy",
@@ -74,12 +74,25 @@ namespace sweetkin.unitgen
                 {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = Delicharacter
+                            ParamCharacterData = Delicharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                 }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXI",
+                UpgradeTitleKey = "Sweetkin_Essence_XXI",
+                SourceSynthesisUnit = Delicharacter,
+                UpgradeDescription = "Essence_Card_XXI",
+                UpgradeDescriptionKey = "Essence_Card_XXI",
+
+                CostReduction = 1,
+
+            }.Build();
         }
     }
 }

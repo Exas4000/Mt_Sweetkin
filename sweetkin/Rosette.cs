@@ -16,6 +16,7 @@ namespace sweetkin
             {
                 CharacterID = "Sweetkin_champion",
                 Name = "Rosette",
+                NameKey = "Sweetkin_Champ_Name",
                 Size = 2,
                 Health = 10,
                 AttackDamage = 0,

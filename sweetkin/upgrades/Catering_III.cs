@@ -40,7 +40,7 @@ namespace sweetkin.upgrades
                                 BonusHP = 70,
                                 BonusDamage = 30,
                                 BonusSize = 2,
-                                HideUpgradeIconOnCard = true,
+                                HideUpgradeIconOnCard = false,
                                 }.Build(),
                             }
                         }

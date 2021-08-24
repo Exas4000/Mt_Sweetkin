@@ -76,12 +76,34 @@ namespace sweetkin.unitgen
                     {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = sweetlingcharacter
+                            ParamCharacterData = sweetlingcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                     }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXXI",
+                UpgradeTitleKey = "Sweetkin_Essence_XXXI",
+                SourceSynthesisUnit = sweetlingcharacter,
+                UpgradeDescription = "Essence_Card_XXXI",
+                UpgradeDescriptionKey = "Essence_Card_XXXI",
+
+
+                BonusHP = 4,
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = "eatmany",
+                        count = 2
+                     },
+                },
+
+            }.Build();
         }
     }
 }

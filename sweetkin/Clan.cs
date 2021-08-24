@@ -27,6 +27,7 @@ namespace sweetkin
                 ClassID = ID,
                 DraftIconPath = "sweet/Clan Assets/Icon_CardBack_Sweetkin.png",
                 Name = "Sweet Kin",
+                TitleLoc = "Sweetkin_Clan_Name",
                 Description = "A hospitable force from another world, unknowingly taking part in something greater than they should be. The Sweet kin are often more than what people can chew.",
                 DescriptionLoc = "Clan_desc",
                 SubclassDescription = "Ally yourself with the outerwordly and enticingly sugary SweetKin",
@@ -46,6 +47,7 @@ namespace sweetkin
 
                 UiColor = new Color(0.9f, 0.18f, 0.81f, 0.5f),
                 UiColorDark = new Color(0.48f, 0.03f, 0.42f, 0.26f),
+                
 
             }.BuildAndRegister();
         }
@@ -71,8 +73,7 @@ namespace sweetkin
                     "Sweetkin_Card_FastFood",
                     "Sweetkin_Card_Butler",
                     "Sweetkin_Card_Maid",                    
-                    "Sweetkin_Card_Mint",
-                    "Sweetkin_Card_Cayenne",
+                    "Sweetkin_Card_Mint",                    
                     "Sweetkin_Card_SourGuard",
                     "Sweetkin_Card_Lime",
                     "Sweetkin_Card_Viimp",

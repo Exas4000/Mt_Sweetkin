@@ -58,7 +58,7 @@ namespace sweetkin.unitgen
                     }
             }.BuildAndRegister();
 
-            CardData sweetling = new CardDataBuilder
+            CardData sourling = new CardDataBuilder
             {
                 CardID = "Sweetkin_Card_Sourling",
                 Name = "Sourling",
@@ -76,12 +76,34 @@ namespace sweetkin.unitgen
                     {
                         new CardEffectDataBuilder
                         {
-                            EffectStateType = VanillaCardEffectTypes.CardEffectSpawnMonster,
+                            EffectStateType = typeof(CardEffectSpawnMonster),
                             TargetMode = TargetMode.DropTargetCharacter,
-                            ParamCharacterData = sourlingcharacter
+                            ParamCharacterData = sourlingcharacter,
+                            EffectStateName = "CardEffectSpawnMonster"
                         }
                     }
             }.BuildAndRegister();
+
+            new CardUpgradeDataBuilder()
+            {
+                upgradeTitle = "Sweetkin_Essence_XXVI",
+                UpgradeTitleKey = "Sweetkin_Essence_XXVI",
+                SourceSynthesisUnit = sourlingcharacter,
+                UpgradeDescription = "Essence_Card_XXVI",
+                UpgradeDescriptionKey = "Essence_Card_XXVI",
+
+                
+                BonusDamage = 4,
+                StatusEffectUpgrades = new List<StatusEffectStackData>
+                {
+                     new StatusEffectStackData
+                     {
+                        statusId = "eatmany",
+                        count = 2
+                     },
+                },
+
+            }.Build();
         }
     }
 }
